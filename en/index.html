@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Only the main Bootstrap CSS file is sufficient -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    
+    <title>Hesy Tools</title>
+    <link rel="icon" href="../round-icon.png">
+
+    <!-- Script that detects and applies the system theme (Runs before the page renders) -->
+    <script>
+        const getPreferredTheme = () => window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        
+        // Set theme on first load
+        document.documentElement.setAttribute('data-bs-theme', getPreferredTheme());
+        
+        // Update instantly when system theme changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+            document.documentElement.setAttribute('data-bs-theme', getPreferredTheme());
+        });
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script>alert("Hesy Tools is designed to support dental practice. Please verify the accuracy of the information and current guidelines before making a final medical decision.")</script>
+</head>
+<body class="text-center" x-data="hesyapp">
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark" x-data="{ isMenuOpen: false }">
+        <div class="container-fluid">
+            <img src="../round-icon.png" alt="">
+            <button class="navbar-toggler" type="button" @click="isMenuOpen = !isMenuOpen">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" :class="isMenuOpen ? 'show' : ''" id="collapsibleNavbar">
+                <ul class="navbar-nav" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-bs-toggle="tab" href="#hometab" role="tab" @click="isMenuOpen = false">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="tab" href="#periocalctab" role="tab" @click="isMenuOpen = false">Periodontal Calculators</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="tab" href="#konstab" role="tab" @click="isMenuOpen = false">Consultation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="tab" href="#herbsttab" role="tab" @click="isMenuOpen = false">Herbst Tests</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="tab" href="#recetetab" role="tab" @click="isMenuOpen = false">Ready Prescription Templates</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="tab" href="#hematab" role="tab" @click="isMenuOpen = false">Hematological Calculations</a>
+                    </li>                                         
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="tab" href="#travma" role="tab" @click="isMenuOpen = false">Trauma Protocol</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="tab" href="#profilaksi" role="tab" @click="isMenuOpen = false">Pediatric Prophylaxis Calculator</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="tab" href="#about" role="tab" @click="isMenuOpen = false">About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="tab-content">
+
+        <div class="tab-pane fade show active" id="hometab" role="tabpanel">
+            <div class="container mt-3">
+                <div class="alert alert-warning" role="alert">
+                    <strong>Warning!</strong> Hesy Tools is designed to support dental practice. Please verify the accuracy of the information and current guidelines before making a final medical decision.
+                </div>  
+                <h1><strong>Welcome to Hesy Tools</strong></h1>
+                <h6>A collection of small tools for dentistry.</h6> 
+                <div class="card bg-secondary text-white">
+                    <div class="card-body">
+                        <strong>Periodontal Calculators:</strong>
+                        A comprehensive specific calculator for periodontological indices.
+                    </div>
+                </div>
+                <br>            
+                <div class="card">
+                    <div class="card-body">
+                        <strong>Consultation:</strong>
+                        A simple script that generates text specific to the patient to be consulted.
+                    </div>
+                </div>
+                <br>
+                <div class="card bg-primary text-white">
+                    <div class="card-body">
+                        <strong>Herbst Tests:</strong>
+                        A tool where you can find the complete set of sequential tests to be performed for removable prostheses.
+                    </div>
+                </div>
+                <br>
+                <div class="card bg-info text-dark">
+                    <div class="card-body">
+                        <strong>Ready Prescription Templates:</strong>
+                        A tool containing the most commonly used drugs and prescriptions in the clinic.
+                    </div>
+                </div>
+                <br>
+                <div class="card bg-warning text-dark">
+                    <div class="card-body">
+                        <strong>Hematological Calculations:</strong>
+                        A tool that calculates whether the patient's blood values are normal.
+                    </div>
+                </div>
+                <br>
+                <div class="card bg-success text-white">
+                    <div class="card-body">
+                        <strong>Trauma Protocol:</strong>
+                        A wizard that lists the procedures to be performed according to trauma injuries.
+                    </div>
+                </div>
+                <br>
+                <div class="card bg-danger text-white">
+                    <div class="card-body">
+                        <strong>Pediatric Prophylaxis Calculator:</strong>
+                        A calculator for the antibiotics required for a child's prophylaxis based on their weight.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--periodontal calculations-->
+        <div class="container tab-pane fade" id="periocalctab" role="tabpanel">
+            <div class="btn-group">
+                <button type="button" class="btn btn-outline btn-lg" data-bs-toggle="collapse" data-bs-target="#gingivitis">2017 Periodontal Classification Calculator</button>
+                <button type="button" class="btn btn-outline btn-lg" data-bs-toggle="collapse" data-bs-target="#periodontitis">Gingival Index (Löe and Silness)</button>
+            </div>
+            <hr>
+            <div id="perioonoff">
+                <div id="gingivitis" class="collapse" data-bs-parent="#perioonoff">
+                    
+                    <div class="row mb-3 align-items-center">
+                        <label class="col-sm-5 col-form-label">Number of bleeding surfaces:</label>
+                        <div class="col-sm-7">
+                            <input type="number" class="form-control" x-model="kanamaging">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3 align-items-center">
+                        <label class="col-sm-5 col-form-label">Total number of probed surfaces:</label>
+                        <div class="col-sm-7">
+                            <input type="number" class="form-control" x-model="yuzging">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3 align-items-center">
+                        <label class="col-sm-5 col-form-label">Probing depth:</label>
+                        <div class="col-sm-7">
+                            <input type="number" class="form-control" x-model="probed">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3 align-items-center">
+                        <label class="col-sm-5 col-form-label">Number of teeth lost due to periodontal reasons:</label>
+                        <div class="col-sm-7">
+                            <input type="number" class="form-control" x-model="diskaybi">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3 align-items-center">
+                        <label class="col-sm-5 col-form-label">Attachment loss:</label>
+                        <div class="col-sm-7">
+                            <input type="number" class="form-control" x-model="atasmankaybi">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3 align-items-center">
+                        <label class="col-sm-5 col-form-label">Smoking:</label>
+                        <div class="col-sm-7">
+                            <input type="number" class="form-control" x-model="sigara">
+                        </div>
+                    </div>
+                    <div class="row mb-3 align-items-center">
+                        <label class="col-sm-5 col-form-label">HbA1c Value:</label>
+                        <div class="col-sm-7">
+                            <input type="number" class="form-control" x-model="diyabet">
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-4">
+                        <button type="button" class="btn btn-primary px-5" @click="ging()">Calculate</button>
+                    </div>
+                    
+                    <div x-text="gingsonuc" class="mt-3 text-center fw-bold fs-5"></div>
+                </div>
+
+                <div id="periodontitis" class="collapse" data-bs-parent="#perioonoff">
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label">Surfaces with mild inflammation:</label>
+                        <div class="col-sm-2">
+                            <input type="number" class="form-control" x-model="hafifging">
+                        </div>
+                        <label class="col-sm-2 col-form-label">Surfaces with moderate inflammation:</label>
+                        <div class="col-sm-2">
+                            <input type="number" class="form-control" x-model="ortaging">
+                        </div>
+                        <label class="col-sm-2 col-form-label">Surfaces with severe inflammation:</label>
+                        <div class="col-sm-2">
+                            <input type="number" class="form-control" x-model="siddetliging">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label class="col-sm-6 col-form-label">Number of examined surfaces:</label>
+                        <div class="col-sm-6">
+                            <input type="number" class="form-control" x-model="loesy">
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-primary" @click="loes">Calculate</button>
+                    <div x-text="loessonuc" class="mt-3 text-center fw-bold fs-5"></div>
+                </div>
+
+            </div> <!-- Main container end -->
+        </div>
+        <!--Consultation-->
+        <div id="konstab" class="container tab-pane fade" x-data="hesyapp">
+            
+            <div class="row mb-3 align-items-center">
+                <label class="col-sm-4 col-form-label">Disease of the patient to be consulted:</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" x-model="hastalik">
+                </div>
+            </div>
+
+            <div class="row mb-3 align-items-center">
+                <label class="col-sm-4 col-form-label">Procedure to be applied:</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" x-model="islem">
+                </div>
+            </div>
+
+            <!-- Offset is used to align the checkbox with the inputs -->
+            <div class="row mb-3">
+                <div class="col-sm-8 offset-sm-4">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" x-model="check1" id="check1" name="option1" value="something">
+                        <label class="form-check-label" for="check1">The patient does not use any medication</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-3 align-items-center">
+                <label class="col-sm-4 col-form-label">Name of the medication used by the patient:</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" x-model="ilac">
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <button type="button" class="btn btn-primary px-4" @click="kons()">Generate Consultation!</button>
+            </div>
+            
+            <div x-text="konssonuc" class="mt-3 text-center fw-bold fs-5 "></div>
+            
+        </div>
+        <!-- Herbst Tab Start -->
+        <div class="container tab-pane fade" id="herbsttab" role="tabpanel">       
+            <!-- 1. CHANGE: Added gIndex number to group loop -->
+            <template x-for="(grup, gIndex) in herbstverileri" :key="gIndex">
+                <div class="mb-5 text-start">
+                    <h3 class="text-primary border-bottom pb-2" x-text="grup.baslik"></h3>
+                    
+                    <div class="accordion" :id="'accordion-' + gIndex">
+                        
+                        <!-- 2. CHANGE: Added tIndex number to test loop -->
+                        <template x-for="(test, tIndex) in grup.testler" :key="tIndex">
+                            <div class="accordion-item bg-dark border-secondary mb-2">
+                                
+                                <!-- 3. CHANGE: IDs are created purely from numbers with 'gIndex-tIndex' combination -->
+                                <h2 class="accordion-header" :id="'heading-' + gIndex + '-' + tIndex">
+                                    <button class="accordion-button collapsed bg-dark text-white shadow-none" 
+                                            type="button" 
+                                            data-bs-toggle="collapse" 
+                                            :data-bs-target="'#collapse-' + gIndex + '-' + tIndex" 
+                                            aria-expanded="false"
+                                            :aria-controls="'collapse-' + gIndex + '-' + tIndex">
+                                        <span x-text="test.soru"></span>
+                                    </button>
+                                </h2>
+
+                                <div :id="'collapse-' + gIndex + '-' + tIndex" 
+                                    class="accordion-collapse collapse" 
+                                    :data-bs-parent="'#accordion-' + gIndex">
+                                    
+                                    <div class="accordion-body border-top border-secondary">
+                                        <div x-html="test.icerik"></div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </template>
+        </div>        
+
+        <!--Prescriptions-->
+        <div id="recetetab" class="container tab-pane fade" role="tabpanel">
+            
+            <h4 class="border-bottom pb-2 mb-4 text-center">Frequently Used Prescriptions</h4>
+
+            <div class="accordion" id="accordionRecete">
+                
+                <template x-for="(recete, index) in receteverileri" :key="index">
+                    
+                    <div class="accordion-item bg-dark border-secondary mb-2">
+                        
+                        <h2 class="accordion-header" :id="'heading-recete-' + index">
+                            <button class="accordion-button collapsed bg-dark text-white shadow-none" 
+                                    type="button" 
+                                    data-bs-toggle="collapse" 
+                                    :data-bs-target="'#collapse-recete-' + index" 
+                                    aria-expanded="false"
+                                    :aria-controls="'collapse-recete-' + index">
+                                <span x-text="recete.tani"></span>
+                            </button>
+                        </h2>
+
+                        <div :id="'collapse-recete-' + index" 
+                            class="accordion-collapse collapse" 
+                            :data-bs-parent="'#accordionRecete'">
+                            
+                            <div class="accordion-body border-top border-secondary" style="background-color: #1e1e1e;">
+                                <ul class="list-group list-group-flush">
+                                    
+                                    <!-- Inner loop made safe by adding iIndex -->
+                                    <template x-for="(ilac, iIndex) in recete.ilaclar" :key="iIndex">
+                                        <li class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-secondary text-white text-start">
+                                            <div>
+                                                <strong class="text-warning" x-text="ilac.ad"></strong>
+                                                <div class="small text-white-50" x-text="'Dose: ' + ilac.doz"></div>
+                                            </div>
+                                            <!-- Updated to Bootstrap 5 badge classes -->
+                                            <span class="badge bg-info rounded-pill text-dark" x-text="ilac.kullanim"></span>
+                                        </li>
+                                    </template>
+
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </template>
+
+            </div>
+        </div>
+        <!--About-->
+        <div id="about" class="container tab-pane fade">
+            <h1>About</h1>
+            <p>Hesy Tools is a digital assistant tool that gathers the information and calculations frequently needed in dental practice into a single interface. While mathematically calculating hematological risk analysis and periodontal staging; it acts as a fast-accessible digital reference source for commonly used prescription protocols and anamnesis terms. I developed it to accelerate complex processes and access practical information in seconds.</p>
+            <div class="d-flex justify-content-center" style="gap: 15px;">
+                <a href="https://github.com/FurkanKokcu" target="_blank" class="btn btn-outline-secondary">
+                    <i class="fab fa-github mr-2"></i>My Other Applications
+                </a>
+                
+                <a href="https://www.gnu.org/licenses/gpl-3.0.html" target="_blank" class="btn btn-outline-danger">
+                    <i class="fas fa-balance-scale mr-2"></i>GNU GPLv3 License
+                </a>
+            </div>
+        </div>
+            
+        
+
+        <!--Hematological calculation-->
+        <div id="hematab" class="container tab-pane fade text-center">
+            <p>Hemoglobin A1C level:</p>
+            <input type="number" class="form-control" x-model="ha1c">
+            <label class="form-label">Blood Pressure Value (mmHg)</label>
+
+            <div class="input-group mb-3">
+                <input type="number" class="form-control" x-model="sysInput" placeholder="Systolic (120)">
+                <input type="number" class="form-control" x-model="diaInput" placeholder="Diastolic (80)">
+            </div>
+            <p>INR value:</p>
+            <input type="number" class="form-control" x-model="inr">
+            <p>Hemoglobin value:</p>
+            <input type="number" class="form-control" x-model="hemoglobin">
+            <button type="button" class="btn btn-primary" @click="hemamathfunc()">Analyze</button>
+
+            <div x-html="hemasonuc"></div>
+        </div>
+        
+          <!--Prophylaxis-->
+        <div id="profilaksi" class="container tab-pane fade text-center mt-4">
+            <p>Child's weight:</p>
+            <input class="form-control mb-3" type="number" x-model="kilo">
+
+            <div class="custom-control custom-checkbox mb-2">
+                <input type="checkbox" class="custom-control-input" id="yol_id" x-model="yolcheck">
+                <label class="custom-control-label" for="yol_id">Medication can be taken orally</label>
+            </div>
+
+            <div class="custom-control custom-checkbox mb-3">
+                <input type="checkbox" class="custom-control-input" id="alerji_id" x-model="alergycheck">
+                <label class="custom-control-label" for="alerji_id">Penicillin allergy present</label>
+            </div>
+
+            <button class="btn btn-primary" @click="profilaksifunc()">Calculate</button>
+
+            <p class="mt-3 font-weight-bold" x-text="profilaksisonuc"></p>
+        </div>
+
+        <!--Trauma-->
+        <div id="travma" class="container tab-pane fade text-center mt-4" x-data="{ adim: 1 }">
+        
+        <div class="card shadow-lg p-4 p-md-5 wizard-card" x-show="adim === 1" x-transition>
+            <div>
+            <h4>Is the tooth completely out of the socket?</h4>
+            <button class="btn btn-info btn-lg btn-block font-weight-bold py-3 shadow-sm mt-3" data-bs-toggle="collapse" data-bs-target="#fiqu">Yes</button>
+            <div id="fiqu" class="collapse mt-2">🚨 Result: AVULSION
+                <div style="white-space: pre-wrap;">
+        🦷 AVULSION EMERGENCY PROTOCOL (ALL CASES)
+
+        Cleaning: Wash the tooth gently with saline or chlorhexidine.
+
+        Anesthesia & Socket: Administer anesthesia without vasoconstrictor, irrigate the socket.
+
+        Fixation: Replant with finger pressure, take a radiograph, apply a flexible splint for 2 weeks (4 weeks if there is an alveolar fracture).
+
+        Prescription: Systemic antibiotics, chlorhexidine mouthwash, soft diet, tetanus check.
+                </div>
+                <details>
+                <summary>⏱️ SITUATION 1: Dry Time < 60 Min (or replanted at the scene)</summary>
+                <div style="white-space: pre-wrap;">
+        Open Apex (Immature Root):
+        DO NOT START root canal treatment IMMEDIATELY (wait for revascularization).
+        If necrosis develops during follow-up: Apexification / Revascularization.
+
+        Closed Apex (Mature Root):
+        Start root canal treatment within 7-10 days (while splinted).
+        Keep calcium hydroxide in the canal for 4-8 weeks, then perform permanent filling.
+                </div>
+                </details>
+                <details>
+                <summary>⏱️ SITUATION 2: Dry Time > 60 Min (Ankylosis Expected)</summary>
+                <div style="white-space: pre-wrap;">
+        (Goal: To preserve bone height and aesthetics, even temporarily)
+        Open Apex (Immature Root):
+        Revascularization is expected, but start apexification or root canal treatment the moment necrosis/infection is observed.
+
+        Closed Apex (Mature Root):
+        Start root canal treatment within 7-10 days.
+        Keep calcium hydroxide in the canal for 4-8 weeks, then perform permanent filling.
+                </div>
+                </details>
+            </div>
+            
+            
+            <button @click="adim = 2" class="btn btn-info btn-lg btn-block font-weight-bold py-3 shadow-sm mt-3">No</button>
+            </div>
+        </div>
+
+        <div class="card shadow-lg p-4 p-md-5 wizard-card" x-show="adim === 2" x-transition style="display: none;">
+            <div>
+            <h4>Is there displacement of the tooth in the socket?</h4>
+            <button @click="adim = 3" class="btn btn-info btn-lg btn-block font-weight-bold py-3 shadow-sm mt-3">Yes</button>
+            <button @click="adim = 6" class="btn btn-info btn-lg btn-block font-weight-bold py-3 shadow-sm mt-3">No</button>
+            </div>
+        </div>
+
+        <div class="card shadow-lg p-4 p-md-5 wizard-card" x-show="adim === 3" x-transition style="display: none;">
+            <div>
+            <h4>Is there mobility in this displaced tooth?</h4>
+            <button @click="adim = 4" class="btn btn-info btn-lg btn-block font-weight-bold py-3 shadow-sm mt-3">Yes</button>
+            <button @click="adim = 5" class="btn btn-info btn-lg btn-block font-weight-bold py-3 shadow-sm mt-3">No</button>
+            </div>
+        </div>
+
+        <div class="card shadow-lg p-4 p-md-5 wizard-card" x-show="adim === 4" x-transition style="display: none;">
+            <div>
+            <h4>Is the mobility in a single tooth, or as a block?</h4>
+            <button class="btn btn-info btn-lg btn-block font-weight-bold py-3 shadow-sm mt-3" data-bs-toggle="collapse" data-bs-target="#foqu">MULTIPLE TEETH (Moving together)</button>
+            <div id="foqu" class="collapse mt-2">🚨 Result: ALVEOLAR FRACTURE
+                <details>
+                <div style="white-space: pre-wrap;">
+        Priority Repositioning of the Socket: If a fracture is detected in the alveolar socket wall, the fractured bone fragment must be brought to its original position with a suitable instrument before placing the tooth. If resistance is encountered while seating the tooth, it indicates a labial alveolar bone fracture, and the alveolar socket should be repositioned before the tooth.
+
+        Extension of Splint Duration: This is the most important detail that changes the treatment protocol. In cases accompanied by a marginal bone (alveolar) fracture, the flexible splinting duration, which is normally 2 weeks, should be extended to 3-4 weeks, and definitively to 4 weeks in avulsion cases.
+
+        Healing (Clinical Note): Alveolar fractures seen together with root fractures usually heal without any problems.
+                </div>
+                </details>        
+            </div>
+
+            <button @click="adim = '4a'" class="btn btn-info btn-lg btn-block font-weight-bold py-3 shadow-sm mt-3">ONLY SINGLE TOOTH</button>
+            </div>
+        </div>
+        <div class="card shadow-lg p-4 p-md-5 wizard-card" x-show="adim === '4a'" x-transition style="display: none;">
+            <div>
+            <h4>Is there evidence of a root fracture on the x-ray?</h4>
+            <button class="btn btn-info btn-lg btn-block font-weight-bold py-3 shadow-sm mt-3" data-bs-toggle="collapse" data-bs-target="#fiqu">Yes</button>
+            <div id="fiqu" class="collapse mt-2">🚨 Result: ROOT FRACTURE
+                <details>
+                <summary>⚡ ROOT FRACTURE EMERGENCY PROTOCOL</summary>
+                <div style="white-space: pre-wrap;">
+        1. Diagnosis and Test Warning
+        X-ray: A single angle is not enough! To avoid missing the fracture line, radiographs must be taken from at least 3 different angles (45°, 90°, 110°).
+        Vitality: Not reliable for the first 2-6 months (Pulpal healing can take up to 12 months, do not jump into root canal treatment immediately).
+
+        2. Emergency Intervention and Splint Durations
+        (The displaced coronal fragment is seated with finger/forceps pressure. If there is resistance, there may be a labial bone fracture, fix the alveolar socket first!).
+        General Root Fractures: Seat it and apply a flexible splint for 2-4 weeks. (If there is no mobility, a splint may not be needed).
+        Fractures in the Cervical (Neck) Third: If the fracture is far from the crestal peak but close to the cervical, extend the splint duration up to 4 months.
+        Crest Level or Higher Fractures: Prognosis is poor. Extract the coronal (upper) fragment, plan orthodontic/surgical extrusion for the root (apical) fragment.
+
+        3. Advanced Treatment (If Necrosis Develops)
+        If the pulp dies during follow-up (radiolucency, fistula, pain, etc.), root canal treatment is ONLY performed on the upper (coronal) fragment up to the fracture line.
+        A hard tissue barrier is established at the root end of the upper fragment with Calcium Hydroxide or MTA.
+        The lower (apical) fragment usually remains vital and obliterates itself, that part is left untouched.
+                </div>
+                </details>        
+            </div>
+            <button class="btn btn-info btn-lg btn-block font-weight-bold py-3 shadow-sm mt-3" data-bs-toggle="collapse" data-bs-target="#siqu">No</button>
+            <div id="siqu" class="collapse mt-2">🚨 Result: EXTRUSION
+                <details>
+                <summary>⚡ EXTRUSION EMERGENCY PROTOCOL</summary>
+                <div style="white-space: pre-wrap;">
+        1. Clinical and Radiographic Presentation
+        Findings: The tooth is elongated out of the socket (coronally), is mobile, and bleeding comes from the gingiva. Vitality tests mostly yield negative responses.
+        X-ray: The space at the root end (apical) is observed to be significantly increased.
+
+        2. Emergency Intervention and Repositioning (Critical Distinction!)
+        Early Presentation (<24 Hours): The tooth is gently pushed and seated into its normal position (repositioning).
+        Late Presentation (>24 Hours) or if a Clot is Present: The tooth may be fixed in its new position, or the clot at the root end may prevent seating. Do not try to push the tooth by force! Instead, perform "intentional replantation" (Surgically extract the tooth and place it back into its socket within 10 minutes).
+        Splint: In both cases, apply a flexible splint for 2 weeks after seating.
+
+        3. Advanced Treatment Based on Root End (Apex) Status
+        Closed Apex (Mature Root): The nerve tissue always dies (necrosis is guaranteed). To prevent infection, start root canal treatment within 7-10 days after trauma without waiting.
+        Open Apex (Immature Root): There is a possibility of nerve revascularization. Do not start root canal treatment immediately, observe. If the pulp dies during follow-up, perform apexification treatment.
+                </div>
+                </details>      
+            </div>
+            </div>
+        </div>
+        <div class="card shadow-lg p-4 p-md-5 wizard-card" x-show="adim === 5" x-transition style="display: none;">
+            <div>
+            <h4>What is the direction of the tooth displacement?</h4>
+            <button class="btn btn-info btn-lg btn-block font-weight-bold py-3 shadow-sm mt-3" data-bs-toggle="collapse" data-bs-target="#sequ">INTRUSION (Pushed Inward)</button>
+            <div id="sequ" class="collapse mt-2">🚨 Result: INTRUSION
+                <details>
+                <summary>⚡ INTRUSION EMERGENCY PROTOCOL</summary>
+                <div style="white-space: pre-wrap;">
+        1. Clinical Presentation
+        Findings: The tooth is impacted into the bone. It is not mobile, gives a metallic/high-pitched sound on percussion. It is the luxation type with the worst prognosis.
+
+        2. Open Apex (Immature Root)
+        Wait: Do not intervene immediately, wait for the tooth to erupt spontaneously for 3 weeks.
+        If it does not erupt: Extrude with orthodontic or surgical force.
+        Pulp: Do not perform root canal treatment, monitor vitality. Only if necrosis develops, perform apexification/revascularization.
+
+        3. Closed Apex (Mature Root)
+        Do not wait: Immediately after trauma (within 2-3 weeks), extrude the tooth from its socket with orthodontic or surgical extrusion. (If you perform surgical extrusion, apply a flexible splint for 4 weeks).
+        Pulp (100% Necrosis Expected): DEFINITELY start root canal treatment within 2 weeks and place calcium hydroxide in the canal.
+                </div>
+                </details>  
+            </div>
+
+            <button class="btn btn-info btn-lg btn-block font-weight-bold py-3 shadow-sm mt-3" data-bs-toggle="collapse" data-bs-target="#egqu">FORWARD/BACKWARD (Protrusion/Retrusion)</button>
+            <div id="egqu" class="collapse mt-2">🚨 Result: LATERAL LUXATION
+                <details>
+                <summary>⚡ LATERAL LUXATION EMERGENCY PROTOCOL</summary>
+                <div style="white-space: pre-wrap;">
+        1. Clinical Presentation
+        Situation: The tooth is displaced outside the socket (mostly in a palatal/lingual direction).
+        Mobility: It is not mobile because it is locked within the bone.
+        Findings: Gives a high/metallic sound on percussion, vitality test is negative, there may be bleeding in the gingival sulcus.
+
+        2. Emergency Intervention
+        Repositioning: Seat it with finger pressure under anesthesia and check with a radiograph.
+        Forcing: If the tooth does not seat, do not use force. Wait 2 weeks, then correct with a removable appliance.
+        Splint: Apply a flexible splint for 4 weeks. If there is a marginal bone fracture, extend the duration for 3-4 weeks.
+
+        3. Pulp Protocol
+        Open Apex: Do not perform root canal treatment immediately, monitor. Apply apexification only if necrosis develops.
+        Closed Apex: DEFINITELY start root canal treatment within 2 weeks in cases where necrosis develops.
+        Resorption Prevention: Place calcium hydroxide in the canal against inflammatory resorption. If there is no lesion at the 3-month check-up, complete the permanent filling.
+                </div>
+                </details>  
+            </div>
+            </div>
+        </div>
+        <div class="card shadow-lg p-4 p-md-5 wizard-card" x-show="adim === 6" x-transition style="display: none;">
+            <div>
+            <h4>Is there loosening/mobility in the tooth?</h4>
+            <button class="btn btn-info btn-lg btn-block font-weight-bold py-3 shadow-sm mt-3" data-bs-toggle="collapse" data-bs-target="#niqu">Yes</button>
+            <div id="niqu" class="collapse mt-2">🚨 Result: ALVEOLAR FRACTURE
+                <details>
+                <summary>⚡ ALVEOLAR FRACTURE EMERGENCY PROTOCOL</summary>
+                <div style="white-space: pre-wrap;">
+        1. Clinical Presentation
+        Situation: Fracture of the alveolar socket wall or alveolar process (the bone surrounding the tooth).
+        Diagnosis: Detected by the group mobility test (grouped teeth moving together as a block, not just a single tooth).
+        Course: Often seen together with root fractures or luxation (displacement) injuries. Alveolar fractures accompanying a root fracture usually heal without problems.
+
+        2. Emergency Intervention
+        Repositioning: If you encounter resistance while seating the traumatized tooth (e.g., labial alveolar bone fracture), first seat the alveolar socket (fractured bone fragment).
+        Splint: Apply a flexible splint for 4 weeks to stabilize the fractured bone. If there is also a marginal bone fracture in a lateral luxation case, extend the splint duration by 3-4 weeks.
+
+        3. Pulp Protocol
+        Follow-up: Apply the open/closed apex rules of the main trauma type (avulsion, luxation, etc.) of the tooth accompanying the fracture, and strictly monitor the vitality of the affected teeth with vitality tests regularly.
+                </div>
+                </details>  
+            </div>
+            <button @click="adim = 7" class="btn btn-info btn-lg btn-block font-weight-bold py-3 shadow-sm mt-3">No</button>
+            </div>
+        </div>
+        <div class="card shadow-lg p-4 p-md-5 wizard-card" x-show="adim === 7" x-transition style="display: none;">
+            <div>
+            <h4>Is there sensitivity to tapping (percussion)?</h4>
+            <button class="btn btn-info btn-lg btn-block font-weight-bold py-3 shadow-sm mt-3" data-bs-toggle="collapse" data-bs-target="#tequ">Yes</button>
+            <div id="tequ" class="collapse mt-2">🚨 Result: CONCUSSION
+                <details>
+                <summary>⚡ CONCUSSION EMERGENCY PROTOCOL</summary>
+                <div style="white-space: pre-wrap;">
+        1. Clinical Presentation
+        Situation: There is no displacement or abnormal mobility in the tooth.
+        Findings: There is increased sensitivity to tapping (percussion). Initially, it may not respond to pulp vitality tests.
+
+        2. Emergency Intervention
+        Procedure: Often, do not apply a specific treatment. Just slightly relieve the tooth from occlusion.
+        Patient Warning: Instruct the patient not to bite or chew with that tooth until the sensitivity decreases.
+
+        3. Pulp Protocol and Follow-up
+        Follow-up: Definitely repeat pulp vitality tests at 1, 3, 6, and 12-month intervals.
+        Complication Risk: Do not neglect regular check-ups as pulp necrosis or root canal obliteration may develop in the future.
+                </div>
+                </details>  
+            </div>
+            <button @click="adim = 8" class="btn btn-info btn-lg btn-block font-weight-bold py-3 shadow-sm mt-3">No</button>
+            </div>
+        </div>
+        <div class="card shadow-lg p-4 p-md-5 wizard-card" x-show="adim === 8" x-transition style="display: none;">
+            <div>
+            <h4>Is there a visible fracture?</h4>
+            <button @click="adim = 9" class="btn btn-info btn-lg btn-block font-weight-bold py-3 shadow-sm mt-3">Yes</button>
+            <button class="btn btn-info btn-lg btn-block font-weight-bold py-3 shadow-sm mt-3" data-bs-toggle="collapse" data-bs-target="#elqu">No</button>
+            <div id="elqu" class="collapse mt-2">✅ Result: HEALTHY</div>
+            </div>
+        </div>
+        <div class="card shadow-lg p-4 p-md-5 wizard-card" x-show="adim === 9" x-transition style="display: none;">
+            <div>
+            <h4>Is the fracture line below the gingival margin?</h4>
+            <button class="btn btn-info btn-lg btn-block font-weight-bold py-3 shadow-sm mt-3" data-bs-toggle="collapse" data-bs-target="#sequ">Yes</button>
+            <div id="sequ" class="collapse mt-2">🚨 Result: CROWN-ROOT FRACTURE
+                <div style="white-space: pre-wrap;">
+        ⚡ CROWN-ROOT FRACTURE EMERGENCY PROTOCOL
+        Situation: The fracture line encompasses enamel, dentin, and cementum tissues. It is divided into "complicated" or "uncomplicated" based on whether the pulp is exposed or not.
+        Findings: The fracture line usually extends below the gingiva (subgingivally). The upper (coronal) fracture fragment is mobile and attached to the gingiva only by periodontal fibers. These fractures predominantly pose a periodontal problem.
+        Radiography: Only the labial side of the fracture can be seen; its lingual extension cannot be observed on the radiograph.
+                </div>
+                <details>
+                <summary>1. Uncomplicated Crown-Root Fracture (Pulp Closed)</summary>
+                <div style="white-space: pre-wrap;">
+        First Step: Remove the mobile coronal fragment immediately under anesthesia.
+        Surgical Procedure: Perform a gingivectomy and, if necessary, osteotomy to expose the fracture line before restoration.
+        Treatment: Restore the tooth in accordance with its original function and aesthetics, protecting the exposed dentinal tubules and pulp.
+                </div>
+                </details>
+                <details>
+                <summary>2. Complicated Crown-Root Fracture (Pulp Exposed)</summary>
+                <div style="white-space: pre-wrap;">
+        Shallow Fracture (Limited to the cervical 1/3 of the root or less): Remove the fracture fragment, expose the fracture line with osteotomy and gingivectomy. After completing gingival healing and root canal treatment, make a post-supported restoration.
+        Deep Fracture - Surgical Extrusion (If the fracture line is deeper): Extract the tooth and reseat it 1-3 mm above (coronal to) the alveolar bone. Stabilize the tooth with a splint, complete root canal treatment after 3-4 weeks, and make a post-supported repair within 2 months.
+        Deep Fracture - Orthodontic Extrusion: First remove the coronal fragment. Perform cervical pulpotomy in a tooth with an open apex, and pulpectomy (root canal treatment) in a tooth with a closed apex. Extrude the tooth by applying orthodontic force for 4 weeks. Then, restore the tooth temporarily, splint it to adjacent teeth for 6 months, and then proceed to the permanent restoration.
+                </div>
+                </details>
+            </div>
+            <button class="btn btn-info btn-lg btn-block font-weight-bold py-3 shadow-sm mt-3" data-bs-toggle="collapse" data-bs-target="#egqu">No</button>
+            <div id="egqu" class="collapse mt-2">🚨 Result: CROWN FRACTURE
+                <div style="white-space: pre-wrap;">
+        ⚡ CROWN FRACTURE EMERGENCY PROTOCOL
+                </div>
+                <details>
+                <summary>1. Incomplete Enamel Fracture (Cracks)</summary>
+                <div style="white-space: pre-wrap;">
+        Situation: Cracks occur in the enamel as a result of a direct blow to the tooth, the risk of pulp necrosis is low. There may not be any sensitivity in the tooth.
+        Diagnosis: Hold a parallel light source to the tooth to examine the crack lines (use the transillumination method).
+        Treatment: Cover the crack line with resins to prevent food staining, apply fluoride. Since pulp vascularization might be damaged, perform regular vitality tests for 5 years.
+                </div>
+                </details>
+                <details>
+                <summary>2. Uncomplicated Crown Fracture (Pulp Closed)</summary>
+                <div style="white-space: pre-wrap;">
+        Situation: Enamel and dentin are fractured but the pulp is not exposed. There is no sensitivity on percussion and tooth mobility is within normal limits.
+        Treatment (Shallow Fracture): If the remaining dentin thickness is more than 0.5 mm, restore with composite by applying etching and bonding procedures. Alternatively, bond the patient's own fractured crown fragment for aesthetics.
+        Treatment (Deep Fracture): If the remaining dentin is less than 0.5 mm, complete the restoration by protecting the pulp with a calcium hydroxide-containing material.
+                </div>
+                </details>
+                <details>
+                <summary>3. Complicated Crown Fracture (Pulp Exposed)</summary>
+                <div style="white-space: pre-wrap;">
+        Situation: The fracture encompasses enamel and dentin, the pulp is exposed to the oral environment.
+        Open Apex (Immature Root): Try to keep the tooth vital; perform partial pulpotomy by removing 1-2 mm of pulp tissue from the exposed part and cover it with calcium hydroxide, MTA, or Biodentine. If more than 72 hours have passed since the trauma, perform a total pulpotomy. Absolutely avoid direct pulp capping as the success rate is low. If the tooth has become necrotic, perform apexification or pulp revitalization (revascularization).
+        Closed Apex (Mature Root): If only a composite restoration will suffice, you can prefer vital pulp therapies (partial/total pulpotomy). However, if you plan a complex restoration requiring a crown-bridge or intraradicular support, perform pulpectomy (root canal treatment) directly. If the pulp is necrotic, perform root canal treatment without losing time.
+                </div>
+                </details>
+            </div>
+            </div>
+        </div>
+        <button @click="adim = 1; sonuc = ''" class="btn btn-dark btn-block mt-4">
+            Restart Wizard
+        </button>
+        </div>
+    </div>
+    <!-- Placing the Bootstrap JS file at the end of the body improves performance -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="main.js"></script>
+</body>
+</html>

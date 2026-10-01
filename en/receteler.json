@@ -1,0 +1,62 @@
+[
+  {
+    "tani": "Sinus Post-Op Infection",
+    "id": "sinus",
+    "ilaclar": [
+      { "ad": "Amoxicillin/Clavulanate 875/125 mg tablets", "doz": "Disp: 10 tabs", "kullanim": "Take 1 tab PO BID" },
+      { "ad": "Ibuprofen 600 mg tablets", "doz": "Disp: 20 tabs", "kullanim": "Take 1 tab PO TID" },
+      { "ad": "Chlorhexidine Gluconate 0.12% Oral Rinse", "doz": "Disp: 1 bottle (473 mL)", "kullanim": "Rinse with 15 mL BID" },
+      { "ad": "Oxymetazoline HCl 0.05% Nasal Spray", "doz": "Disp: 1 bottle", "kullanim": "2 sprays per nostril BID (max 3 days)" },
+      { "ad": "Desloratadine 5 mg tablets", "doz": "Disp: 20 tabs", "kullanim": "Take 1 tab PO QD" }
+    ]
+  },
+  {
+    "tani": "Quadruple Post-Op Infection",
+    "id": "dortlu",
+    "ilaclar": [
+      { "ad": "Amoxicillin/Clavulanate 875/125 mg tablets", "doz": "Disp: 10 tabs", "kullanim": "Take 1 tab PO BID" },
+      { "ad": "Metronidazole 500 mg tablets", "doz": "Disp: 20 tabs", "kullanim": "Take 1 tab PO TID" },
+      { "ad": "Ketorolac 10 mg tablets", "doz": "Disp: 15 tabs", "kullanim": "Take 1 tab PO TID (max 5 days)" },
+      { "ad": "Chlorhexidine Gluconate 0.12% Oral Rinse", "doz": "Disp: 1 bottle (473 mL)", "kullanim": "Rinse with 15 mL BID" }
+    ]
+  },
+  {
+    "tani": "Triple Post-Op Infection",
+    "id": "uclu",
+    "ilaclar": [
+      { "ad": "Amoxicillin/Clavulanate 875/125 mg tablets", "doz": "Disp: 10 tabs", "kullanim": "Take 1 tab PO BID" },
+      { "ad": "Ibuprofen 600 mg tablets", "doz": "Disp: 20 tabs", "kullanim": "Take 1 tab PO TID" },
+      { "ad": "Chlorhexidine Gluconate 0.12% Oral Rinse", "doz": "Disp: 1 bottle (473 mL)", "kullanim": "Rinse with 15 mL BID" }
+    ]
+  },
+  {
+    "tani": "TMJ Myalgia-Myospasm",
+    "id": "eklem",
+    "ilaclar": [
+      { "ad": "Tizanidine 2 mg tablets", "doz": "Disp: 30 tabs", "kullanim": "Take 1 tab PO TID" },
+      { "ad": "Ibuprofen 800 mg tablets", "doz": "Disp: 14 tabs", "kullanim": "Take 1 tab PO BID" }
+    ]
+  },
+  {
+    "tani": "Pre-Operative Infection Prophylaxis",
+    "id": "preop",
+    "ilaclar": [
+      { "ad": "Rifampin 125 mg Injection", "doz": "Disp: 1 vial", "kullanim": "Inject 1 vial IM Stat" },
+      { "ad": "Tenoxicam 20 mg Injection", "doz": "Disp: 1 vial", "kullanim": "Inject 1 vial IM/IV Stat" },
+      { "ad": "Dexamethasone 8 mg/2 mL Injection", "doz": "Disp: 1 vial", "kullanim": "Inject 1 vial IM/IV Stat" }
+    ]
+  },
+  {
+    "tani": "Frequently Used Medications",
+    "id": "sikca",
+    "ilaclar": [
+      { "ad": "Amoxicillin/Clavulanate 875/125 mg tablets", "doz": "Disp: 10 tabs", "kullanim": "Take 1 tab PO BID" },
+      { "ad": "Metronidazole 500 mg tablets", "doz": "Disp: 20 tabs", "kullanim": "Take 1 tab PO TID" },
+      { "ad": "Clarithromycin 500 mg tablets", "doz": "Disp: 14 tabs", "kullanim": "Take 1 tab PO BID" },
+      { "ad": "Acetaminophen 500 mg tablets", "doz": "Disp: 20 tabs", "kullanim": "Take 1 tab PO TID PRN for pain" },
+      { "ad": "Ketorolac 10 mg tablets", "doz": "Disp: 15 tabs", "kullanim": "Take 1 tab PO TID (max 5 days)" },
+      { "ad": "Chlorhexidine Gluconate 0.12% Oral Rinse", "doz": "Disp: 1 bottle (473 mL)", "kullanim": "Rinse with 15 mL BID" },
+      { "ad": "Ibuprofen 600 mg tablets", "doz": "Disp: 20 tabs", "kullanim": "Take 1 tab PO TID" }
+    ]
+  }
+]

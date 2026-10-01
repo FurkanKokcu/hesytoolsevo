@@ -1,0 +1,62 @@
+[
+  {
+    "baslik": "Üst Çene Testleri",
+    "kisaKod": "ust",
+    "testler": [
+      {
+        "soru": "1. TEST: Ağız yarı açıldığı zaman kaide plağı yerinden oynarsa",
+        "icerik": "<strong>Problem:</strong> Buccinatör kasının etkisi.<br><br><strong>Düzeltme:</strong> Her iki taraf 1. ve 2. küçük azılarla, 1. büyük azı hizasında."
+      },
+      {
+        "soru": "2. TEST: Esner gibi ağız çokça açıldığında kaide plağı yerinden oynarsa",
+        "icerik": "<strong>Problem:</strong> Pterygomaksiller rafe ve buccinatör/masseter kaslarının ön lifleri.<br><br><strong>Düzeltme:</strong> Her iki taraf tuberlerin gerisinde 2. büyük azılar hizasında."
+      },
+      {
+        "soru": "3. TEST: Islık çalma veya emme hareketi esnasında kaide plağı oynarsa",
+        "icerik": "<strong>Problem:</strong> Dudak vestibül ve dudak frenulum bölgesi uzundur.<br><br><strong>Düzeltme:</strong> Dudak frenulum ve dudak vestibül bölgesi hizasında."
+      },
+      {
+        "soru": "4. TEST: Dudak bileşkesinin gülme anında geriye/aşağı hareketinde oynarsa",
+        "icerik": "<strong>Düzeltme:</strong> Yanak frenulum ve yanak vestibül bölgesi hizasında."
+      },
+      {
+        "soru": "5. TEST: 'A' sesi veya öksürme ile kaide plağı yerinden oynuyorsa",
+        "icerik": "<strong>Düzeltme:</strong> Kaide plağı ön-arka yönde kısaltılmalıdır."
+      }
+    ]
+  },
+  {
+    "baslik": "Alt Çene Testleri",
+    "kisaKod": "alt",
+    "testler": [
+      {
+        "soru": "1. TEST: Ağız yarı açıldığı zaman kaide plağı yerinden oynarsa",
+        "icerik": "<strong>Düzeltme:</strong> Yanak vestibül bölgesinde kenar uzunlukları kısaltılır."
+      },
+      {
+        "soru": "2. TEST: Ağız çokça açıldığında kaide plağı yerinden oynarsa",
+        "icerik": "<strong>Problem:</strong> Pterygomaksiller rafe ve masseter kaslarının ön lifleri.<br><br><strong>Düzeltme:</strong> Her iki taraf retromolar bölge-büyük azılar hizası kısaltılır."
+      },
+      {
+        "soru": "3. TEST: Dil dışarı uzatıldığında kaide plağı yerinden oynarsa",
+        "icerik": "<strong>Problem:</strong> Mylohyoid kasının hareketleri.<br><br><strong>Düzeltme:</strong> Dil tarafında azılar hizasında mylohyoid kası serbestleştirilmeli, gerekirse plak iç bükeyleştirilmeli."
+      },
+      {
+        "soru": "4. TEST: Dil ucuyla yanak içi yalanırken plak oynarsa",
+        "icerik": "<strong>Düzeltme:</strong> Kanin ve küçük azılar hizasında kısaltmalar yapılır."
+      },
+      {
+        "soru": "5. TEST: Dil burna yöneltildiğinde kaide plağı oynarsa",
+        "icerik": "<strong>Problem:</strong> Dil tarafında kesiciler ve dil frenulumu kısmı.<br><br><strong>Düzeltme:</strong> Bu bölgelere müdahale edilir."
+      },
+      {
+        "soru": "6. TEST: Yutkunma esnasında acı hissi varsa",
+        "icerik": "<strong>Problem:</strong> Farenksin üst konstriktör kası.<br><br><strong>Düzeltme:</strong> Plağın dil taraf köşesi kısaltılmalı ve cilalanmalı."
+      },
+      {
+        "soru": "7. TEST: Islık çalma/emme hareketinde plak oynarsa",
+        "icerik": "<strong>Problem:</strong> O. oris kasının kasılması.<br><br><strong>Düzeltme:</strong> Dudak frenulumu ve vestibül ön bölge düzenlenir."
+      }
+    ]
+  }
+]

@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="tr" data-bs-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Sadece ana Bootstrap CSS dosyası yeterli -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    
+    <title>Hesy Tools</title>
+    <link rel="icon" href="../round-icon.png">
+
+    <!-- Sistem temasını algılayıp uygulayan script (Sayfa render edilmeden önce çalışır) -->
+    <script>
+        const getPreferredTheme = () => window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        
+        // İlk yüklemede temayı ayarla
+        document.documentElement.setAttribute('data-bs-theme', getPreferredTheme());
+        
+        // Sistem teması değiştiğinde anında güncelle
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+            document.documentElement.setAttribute('data-bs-theme', getPreferredTheme());
+        });
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script>alert("Hesy Tools, diş hekimliği pratiğini desteklemek için tasarlanmıştır. Nihai tıbbi kararı vermeden önce bilgilerin doğruluğunu ve güncel kılavuzları kontrol ediniz.")</script>
+</head>
+<body class="text-center" x-data="hesyapp">
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark" x-data="{ isMenuOpen: false }">
+        <div class="container-fluid">
+            <img src="../round-icon.png" alt="">
+            <button class="navbar-toggler" type="button" @click="isMenuOpen = !isMenuOpen">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" :class="isMenuOpen ? 'show' : ''" id="collapsibleNavbar">
+                <ul class="navbar-nav" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-bs-toggle="tab" href="#hometab" role="tab" @click="isMenuOpen = false">Ana Sayfa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="tab" href="#periocalctab" role="tab" @click="isMenuOpen = false">Periodontal Hesaplayıcılar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="tab" href="#konstab" role="tab" @click="isMenuOpen = false">Konsültasyon</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="tab" href="#herbsttab" role="tab" @click="isMenuOpen = false">Herbst Testleri</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="tab" href="#recetetab" role="tab" @click="isMenuOpen = false">Hazır reçete şablonları</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="tab" href="#hematab" role="tab" @click="isMenuOpen = false">Hematolojik Hesaplamalar</a>
+                    </li>                                         
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="tab" href="#travma" role="tab" @click="isMenuOpen = false">Travma Protokolü</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="tab" href="#profilaksi" role="tab" @click="isMenuOpen = false">Çocuk profilaksi hesaplayıcı</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="tab" href="#about" role="tab" @click="isMenuOpen = false">Hakkında</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="tab-content">
+
+        <div class="tab-pane fade show active" id="hometab" role="tabpanel">
+            <div class="container mt-3">
+                <div class="alert alert-warning" role="alert">
+                    <strong>Uyarı!</strong> Hesy Tools, diş hekimliği pratiğini desteklemek için tasarlanmıştır. Nihai tıbbi kararı vermeden önce bilgilerin doğruluğunu ve güncel kılavuzları kontrol ediniz.
+                </div>  
+                <h1><strong>Hesy Tools'a hoş geldiniz</strong></h1>
+                <h6>Diş hekimliğine dair küçük araçlar topluluğu.</h6> 
+                <div class="card bg-secondary text-white">
+                    <div class="card-body">
+                        <strong>Periodontal Hesaplayıcılar</strong>
+                        Periodontolojik indeksler için spesifik hesaplayıcı bütünü.
+                    </div>
+                </div>
+                <br>            
+                <div class="card">
+                    <div class="card-body">
+                        <strong>Konsültasyon:</strong>
+                        Konsülte olacak hastaya özgü metin oluşturan basit bir betik.
+                    </div>
+                </div>
+                <br>
+                <div class="card bg-primary text-white">
+                    <div class="card-body">
+                        <strong>Herbst Testleri:</strong>
+                        Hareketli protezler için sırasıyla yapılacak olan testlerin bütününü bulabileceğiniz bir araç.
+                    </div>
+                </div>
+                <br>
+                <div class="card bg-info text-dark">
+                    <div class="card-body">
+                        <strong>Hazır reçete şablonları:</strong>
+                        Klinikte en çok kullanılan ilaçların, reçetelerin bir arada bulunduğu araç.
+                    </div>
+                </div>
+                <br>
+                <div class="card bg-warning text-dark">
+                    <div class="card-body">
+                        <strong>Hematolojik Hesaplamalar:</strong>
+                        Hastanın kan değerlerinin normal olup olmadığını hesaplayan araç.
+                    </div>
+                </div>
+                <br>
+                <div class="card bg-success text-white">
+                    <div class="card-body">
+                        <strong>Travma Protokolü:</strong>
+                        Travma sonucu oluşan yaralanmalara göre yapılacak işlemlerin prosedürlerini sıralayan sihirbaz.
+                    </div>
+                </div>
+                <br>
+                <div class="card bg-danger text-white">
+                    <div class="card-body">
+                        <strong>Çocuk Profilaksi Hesaplayıcı:</strong>
+                        Çocuğun profilaksisi için gerekli antibiyotikleri kilosuna göre hesaplayıcı.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--periodontal hesaplamalar-->
+        <div class="container tab-pane fade" id="periocalctab" role="tabpanel">
+            <div class="btn-group">
+                <button type="button" class="btn btn-outline btn-lg" data-bs-toggle="collapse" data-bs-target="#gingivitis">2017 Periodontal Sınıflama Hesaplayıcı</button>
+                <button type="button" class="btn btn-outline btn-lg" data-bs-toggle="collapse" data-bs-target="#periodontitis">Gingival İndeks (Löe Sillness)</button>
+            </div>
+            <hr>
+            <div id="perioonoff">
+                <div id="gingivitis" class="collapse" data-bs-parent="#perioonoff">
+                    
+                    <div class="row mb-3 align-items-center">
+                        <label class="col-sm-5 col-form-label">Kanayan yüzey sayısı:</label>
+                        <div class="col-sm-7">
+                            <input type="number" class="form-control" x-model="kanamaging">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3 align-items-center">
+                        <label class="col-sm-5 col-form-label">Toplam sondlanan yüzey sayısı:</label>
+                        <div class="col-sm-7">
+                            <input type="number" class="form-control" x-model="yuzging">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3 align-items-center">
+                        <label class="col-sm-5 col-form-label">Sondlama derinliği:</label>
+                        <div class="col-sm-7">
+                            <input type="number" class="form-control" x-model="probed">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3 align-items-center">
+                        <label class="col-sm-5 col-form-label">Periodontal kaynaklı diş kaybı sayısı:</label>
+                        <div class="col-sm-7">
+                            <input type="number" class="form-control" x-model="diskaybi">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3 align-items-center">
+                        <label class="col-sm-5 col-form-label">Ataşman kaybı:</label>
+                        <div class="col-sm-7">
+                            <input type="number" class="form-control" x-model="atasmankaybi">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3 align-items-center">
+                        <label class="col-sm-5 col-form-label">Sigara kullanımı:</label>
+                        <div class="col-sm-7">
+                            <input type="number" class="form-control" x-model="sigara">
+                        </div>
+                    </div>
+                    <div class="row mb-3 align-items-center">
+                        <label class="col-sm-5 col-form-label">Ha1c Değeri:</label>
+                        <div class="col-sm-7">
+                            <input type="number" class="form-control" x-model="diyabet">
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-4">
+                        <button type="button" class="btn btn-primary px-5" @click="ging()">Hesapla</button>
+                    </div>
+                    
+                    <div x-text="gingsonuc" class="mt-3 text-center fw-bold fs-5"></div>
+                </div>
+
+                <div id="periodontitis" class="collapse" data-bs-parent="#perioonoff">
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label">Hafif inflamasyon bulunan yüz:</label>
+                        <div class="col-sm-2">
+                            <input type="number" class="form-control" x-model="hafifging">
+                        </div>
+                        <label class="col-sm-2 col-form-label">Orta inflamasyon bulunan yüz:</label>
+                        <div class="col-sm-2">
+                            <input type="number" class="form-control" x-model="ortaging">
+                        </div>
+                        <label class="col-sm-2 col-form-label">Şiddetli inflamasyon bulunan yüz:</label>
+                        <div class="col-sm-2">
+                            <input type="number" class="form-control" x-model="siddetliging">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label class="col-sm-6 col-form-label">Kontrol edilen yüzey sayısı:</label>
+                        <div class="col-sm-6">
+                            <input type="number" class="form-control" x-model="loesy">
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-primary" @click="loes">Hesapla</button>
+                    <div x-text="loessonuc" class="mt-3 text-center fw-bold fs-5"></div>
+                </div>
+
+            </div> <!-- Ana kapsayıcı bitişi -->
+        </div>
+        <!--Konsültasyon-->
+        <div id="konstab" class="container tab-pane fade" x-data="hesyapp">
+            
+            <div class="row mb-3 align-items-center">
+                <label class="col-sm-4 col-form-label">Konsülte edilecek hastanın hastalığı:</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" x-model="hastalik">
+                </div>
+            </div>
+
+            <div class="row mb-3 align-items-center">
+                <label class="col-sm-4 col-form-label">Uygulanacak işlem:</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" x-model="islem">
+                </div>
+            </div>
+
+            <!-- Checkbox'ı inputlarla aynı hizaya getirmek için offset kullanıldı -->
+            <div class="row mb-3">
+                <div class="col-sm-8 offset-sm-4">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" x-model="check1" id="check1" name="option1" value="something">
+                        <label class="form-check-label" for="check1">Hasta herhangi bir ilaç kullanmıyor</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-3 align-items-center">
+                <label class="col-sm-4 col-form-label">Hastanın kullandığı ilacın ismi:</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" x-model="ilac">
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <button type="button" class="btn btn-primary px-4" @click="kons()">Konsültasyon Oluştur!</button>
+            </div>
+            
+            <div x-text="konssonuc" class="mt-3 text-center fw-bold fs-5 "></div>
+            
+        </div>
+        <!-- Herbst Tab Başlangıcı -->
+        <div class="container tab-pane fade" id="herbsttab" role="tabpanel">       
+            <!-- 1. DEĞİŞİKLİK: grup döngüsüne gIndex numarasını ekledik -->
+            <template x-for="(grup, gIndex) in herbstverileri" :key="gIndex">
+                <div class="mb-5 text-start">
+                    <h3 class="text-primary border-bottom pb-2" x-text="grup.baslik"></h3>
+                    
+                    <div class="accordion" :id="'accordion-' + gIndex">
+                        
+                        <!-- 2. DEĞİŞİKLİK: test döngüsüne tIndex numarasını ekledik -->
+                        <template x-for="(test, tIndex) in grup.testler" :key="tIndex">
+                            <div class="accordion-item bg-dark border-secondary mb-2">
+                                
+                                <!-- 3. DEĞİŞİKLİK: ID'leri 'gIndex-tIndex' kombinasyonu ile tamamen sayılardan oluşturduk -->
+                                <h2 class="accordion-header" :id="'heading-' + gIndex + '-' + tIndex">
+                                    <button class="accordion-button collapsed bg-dark text-white shadow-none" 
+                                            type="button" 
+                                            data-bs-toggle="collapse" 
+                                            :data-bs-target="'#collapse-' + gIndex + '-' + tIndex" 
+                                            aria-expanded="false"
+                                            :aria-controls="'collapse-' + gIndex + '-' + tIndex">
+                                        <span x-text="test.soru"></span>
+                                    </button>
+                                </h2>
+
+                                <div :id="'collapse-' + gIndex + '-' + tIndex" 
+                                    class="accordion-collapse collapse" 
+                                    :data-bs-parent="'#accordion-' + gIndex">
+                                    
+                                    <div class="accordion-body border-top border-secondary">
+                                        <div x-html="test.icerik"></div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </template>
+        </div>        
+
+        <!--Reçeteler-->
+        <div id="recetetab" class="container tab-pane fade" role="tabpanel">
+            
+            <h4 class="border-bottom pb-2 mb-4 text-center">Sık Kullanılan Reçeteler</h4>
+
+            <div class="accordion" id="accordionRecete">
+                
+                <template x-for="(recete, index) in receteverileri" :key="index">
+                    
+                    <div class="accordion-item bg-dark border-secondary mb-2">
+                        
+                        <h2 class="accordion-header" :id="'heading-recete-' + index">
+                            <button class="accordion-button collapsed bg-dark text-white shadow-none" 
+                                    type="button" 
+                                    data-bs-toggle="collapse" 
+                                    :data-bs-target="'#collapse-recete-' + index" 
+                                    aria-expanded="false"
+                                    :aria-controls="'collapse-recete-' + index">
+                                <span x-text="recete.tani"></span>
+                            </button>
+                        </h2>
+
+                        <div :id="'collapse-recete-' + index" 
+                            class="accordion-collapse collapse" 
+                            :data-bs-parent="'#accordionRecete'">
+                            
+                            <div class="accordion-body border-top border-secondary" style="background-color: #1e1e1e;">
+                                <ul class="list-group list-group-flush">
+                                    
+                                    <!-- İç döngüye de iIndex ekleyerek güvenli hale getirdik -->
+                                    <template x-for="(ilac, iIndex) in recete.ilaclar" :key="iIndex">
+                                        <li class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-secondary text-white text-start">
+                                            <div>
+                                                <strong class="text-warning" x-text="ilac.ad"></strong>
+                                                <div class="small text-white-50" x-text="'Doz: ' + ilac.doz"></div>
+                                            </div>
+                                            <!-- Bootstrap 5 badge sınıflarına güncellendi -->
+                                            <span class="badge bg-info rounded-pill text-dark" x-text="ilac.kullanim"></span>
+                                        </li>
+                                    </template>
+
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </template>
+
+            </div>
+        </div>
+        <!--Hakkında-->
+        <div id="about" class="container tab-pane fade">
+            <h1>Hakkında</h1>
+            <p>Hesy Tools, diş hekimliği pratiğinde sık ihtiyaç duyulan bilgi ve hesaplamaları tek bir arayüzde toplayan dijital bir yardımcı araçtır. Hematolojik risk analizi ve periodontal evreleme işlemlerini matematiksel olarak hesaplarken; sık kullanılan reçete protokolleri ve anamnez terimleri için hızlı erişilebilir bir dijital referans kaynağı görevi görür. Karmaşık süreçleri hızlandırmak ve pratik bilgiye saniyeler içinde ulaşmak için geliştirdim.</p>
+            <div class="d-flex justify-content-center" style="gap: 15px;">
+                <a href="https://github.com/FurkanKokcu" target="_blank" class="btn btn-outline-secondary">
+                    <i class="fab fa-github mr-2"></i>Diğer Uygulamalarım
+                </a>
+                
+                <a href="https://www.gnu.org/licenses/gpl-3.0.html" target="_blank" class="btn btn-outline-danger">
+                    <i class="fas fa-balance-scale mr-2"></i>GNU GPLv3 Lisansı
+                </a>
+            </div>
+        </div>
+            
+        
+
+        <!--Hematolojik hesaplama-->
+        <div id="hematab" class="container tab-pane fade text-center">
+            <p>Hemoglobin A1C seviyesi:</p>
+            <input type="number" class="form-control" x-model="ha1c">
+            <label class="form-label">Tansiyon Değeri (mmHg)</label>
+
+            <div class="input-group mb-3">
+                <input type="number" class="form-control" x-model="sysInput" placeholder="Büyük (120)">
+                <input type="number" class="form-control" x-model="diaInput" placeholder="Küçük (80)">
+            </div>
+            <p>INR değeri:</p>
+            <input type="number" class="form-control" x-model="inr">
+            <p>Hemoglobin değeri:</p>
+            <input type="number" class="form-control" x-model="hemoglobin">
+            <button type="button" class="btn btn-primary" @click="hemamathfunc()">Analiz Et</button>
+
+            <div x-html="hemasonuc"></div>
+        </div>
+        
+          <!--Profilaksi-->
+        <div id="profilaksi" class="container tab-pane fade text-center mt-4">
+            <p>Çocuğun kilosu:</p>
+            <input class="form-control mb-3" type="number" x-model="kilo">
+
+            <div class="custom-control custom-checkbox mb-2">
+                <input type="checkbox" class="custom-control-input" id="yol_id" x-model="yolcheck">
+                <label class="custom-control-label" for="yol_id">Oral yolla ilaç alınabiliyor</label>
+            </div>
+
+            <div class="custom-control custom-checkbox mb-3">
+                <input type="checkbox" class="custom-control-input" id="alerji_id" x-model="alergycheck">
+                <label class="custom-control-label" for="alerji_id">Penisiline alerji mevcut</label>
+            </div>
+
+            <button class="btn btn-primary" @click="profilaksifunc()">Hesapla</button>
+
+            <p class="mt-3 font-weight-bold" x-text="profilaksisonuc"></p>
+        </div>
+
+        <!--Travma-->
+        <div id="travma" class="container tab-pane fade text-center mt-4" x-data="{ adim: 1 }">
+        
+        <div class="card shadow-lg p-4 p-md-5 wizard-card" x-show="adim === 1" x-transition>
+            <div>
+            <h4>Diş yuvadan (soketinden) tamamen çıkmış mı?</h4>
+            <button class="btn btn-info btn-lg btn-block font-weight-bold py-3 shadow-sm mt-3" data-bs-toggle="collapse" data-bs-target="#fiqu">Evet</button>
+            <div id="fiqu" class="collapse mt-2">🚨 Sonuç: AVÜLSİYON
+                <div style="white-space: pre-wrap;">
+        🦷 AVÜLSİYON ACİL PROTOKOLÜ (TÜM VAKALAR)
+
+        Temizlik: Dişi serum fizyolojik veya klorheksidin ile nazikçe yıka.
+
+        Anestezi & Yuva: Vazokonstriktörsüz anestezi yap, soketi yıka.
+
+        Fiksasyon: Parmak basısıyla yerleştir, radyografi al, 2 hafta esnek splint yap (Alveol kırığı varsa 4 hafta ).
+
+        Reçete: Sistemik antibiyotik, klorheksidin gargara, yumuşak diyet, tetanoz kontrolü.
+                </div>
+                <details>
+                <summary>⏱️ DURUM 1: Kuru Kalma < 60 Dk (veya olay yerinde takılan)</summary>
+                <div style="white-space: pre-wrap;">
+        Açık Apeks (Kök Gelişmemiş):
+        Kanal tedavisine HEMEN BAŞLAMA (canlanma bekle).
+        Takipte nekroz gelişirse: Apeksifikasyon / Revaskülarizasyon.
+
+        Kapalı Apeks (Kök Gelişmiş):
+        7-10 gün içinde (splintliyken) kanal tedavisine başla.
+        4-8 hafta kanalda kalsiyum hidroksit beklet, sonra daimi dolgu yap.
+                </div>
+                </details>
+                <details>
+                <summary>⏱️ DURUM 2: Kuru Kalma > 60 Dk (Ankiloz Beklenir)</summary>
+                <div style="white-space: pre-wrap;">
+        (Amaç: Kemik yüksekliğini ve estetiği geçici de olsa korumak )
+        Açık Apeks (Kök Gelişmemiş):
+        Revaskülarizasyon beklenir ancak nekroz/enfeksiyon görüldüğü an apeksifikasyon veya kanal tedavisine başla.
+
+        Kapalı Apeks (Kök Gelişmiş):
+        7-10 gün içinde kanal tedavisine başla.
+        4-8 hafta kanalda kalsiyum hidroksit beklet, sonra daimi dolgu yap.
+                </div>
+                </details>
+            </div>
+            
+            
+            <button @click="adim = 2" class="btn btn-info btn-lg btn-block font-weight-bold py-3 shadow-sm mt-3">Hayır</button>
+            </div>
+        </div>
+
+        <div class="card shadow-lg p-4 p-md-5 wizard-card" x-show="adim === 2" x-transition style="display: none;">
+            <div>
+            <h4>Dişte yuvada yer değiştirme (displasman) var mı?</h4>
+            <button @click="adim = 3" class="btn btn-info btn-lg btn-block font-weight-bold py-3 shadow-sm mt-3">Evet</button>
+            <button @click="adim = 6" class="btn btn-info btn-lg btn-block font-weight-bold py-3 shadow-sm mt-3">Hayır</button>
+            </div>
+        </div>
+
+        <div class="card shadow-lg p-4 p-md-5 wizard-card" x-show="adim === 3" x-transition style="display: none;">
+            <div>
+            <h4>Yer değiştiren bu dişte mobilite (sallanma) var mı?</h4>
+            <button @click="adim = 4" class="btn btn-info btn-lg btn-block font-weight-bold py-3 shadow-sm mt-3">Evet</button>
+            <button @click="adim = 5" class="btn btn-info btn-lg btn-block font-weight-bold py-3 shadow-sm mt-3">Hayır</button>
+            </div>
+        </div>
+
+        <div class="card shadow-lg p-4 p-md-5 wizard-card" x-show="adim === 4" x-transition style="display: none;">
+            <div>
+            <h4>Sallanma tek dişte mi, yoksa blok halinde mi?</h4>
+            <button class="btn btn-info btn-lg btn-block font-weight-bold py-3 shadow-sm mt-3" data-bs-toggle="collapse" data-bs-target="#foqu">BİRDEN FAZLA DİŞ (Birlikte hareket ediyor)</button>
+            <div id="foqu" class="collapse mt-2">🚨 Sonuç: ALVEOL KIRIĞI
+                <details>
+                <div style="white-space: pre-wrap;">
+        Soketin Öncelikli Repozisyonu: Alveol soket duvarında bir kırık tespit edilirse, dişi yerleştirmeden önce uygun bir aletle kırık kemik parçası orijinal konumuna getirilmelidir. Eğer dişi yerine oturturken bir dirençle karşılaşılıyorsa, bu durum labial alveol kemik kırığına işaret eder ve dişten önce alveol soketinin repozisyonu yapılmalıdır.
+
+        Splint Süresinin Uzatılması: Tedavi protokolünü değiştiren en önemli detay budur. Marjinal kemik (alveol) kırığının eşlik ettiği durumlarda, normalde 2 hafta olan esnek splintleme süresi 3-4 haftaya , avülsiyon vakalarında ise net olarak 4 haftaya uzatılmalıdır.
+
+        İyileşme (Klinik Not): Kök kırıklarıyla birlikte görülen alveol kırıkları çoğunlukla sorunsuz bir şekilde iyileşir.
+                </div>
+                </details>        
+            </div>
+
+            <button @click="adim = '4a'" class="btn btn-info btn-lg btn-block font-weight-bold py-3 shadow-sm mt-3">SADECE TEK DİŞ</button>
+            </div>
+        </div>
+        <div class="card shadow-lg p-4 p-md-5 wizard-card" x-show="adim === '4a'" x-transition style="display: none;">
+            <div>
+            <h4>Röntgende kök kırığı bulgusu var mı?</h4>
+            <button class="btn btn-info btn-lg btn-block font-weight-bold py-3 shadow-sm mt-3" data-bs-toggle="collapse" data-bs-target="#fiqu">Evet</button>
+            <div id="fiqu" class="collapse mt-2">🚨 Sonuç: KÖK KIRIĞI
+                <details>
+                <summary>⚡ KÖK KIRIĞI ACİL PROTOKOLÜ</summary>
+                <div style="white-space: pre-wrap;">
+        1. Teşhis ve Test Uyarısı
+        Röntgen: Tek açı yetmez! Kırık hattını gözden kaçırmamak için en az 3 farklı açıda (45°, 90°, 110°) radyografi alınmalıdır .
+        Vitalite: İlk 2-6 ay güvenilir değildir (Pulpanın iyileşmesi 12 ayı bulabilir, hemen kanal tedavisine atlanmaz) .
+
+        2. Acil Müdahale ve Splint Süreleri
+        (Yer değiştiren koronal parça parmak/forseps baskısıyla yerine oturtulur . Direnç varsa labial kemik kırığı olabilir, önce alveol soketini düzelt! )
+        Genel Kök Kırıkları: Yerine oturt ve 2-4 hafta esnek splint uygula . (Mobilite hiç yoksa splinte gerek kalmayabilir ).
+        Servikal (Boyun) Üçlüsündeki Kırıklar: Kırık kret tepesinden uzak ama servikale yakınsa splint süresini 4 aya kadar uzat .
+        Kret Seviyesi veya Üzeri Kırıklar: Prognoz kötüdür. Koronal (üst) parçayı çek, kök (apikal) parçası için ortodontik/cerrahi ekstrüzyon (dışarı çekme) planla .
+
+        3. İleri Dönem Tedavi (Nekroz Gelişirse)
+        Takipte pulpa ölürse (radyolusensi, fistül, ağrı vb.), kanal tedavisi SADECE kırık hattına kadar olan üst (koronal) parçaya yapılır .
+        Üst parçanın kök ucuna Kalsiyum Hidroksit veya MTA ile sert doku bariyeri kurulur .
+        Alttaki (apikal) parça genelde canlı kalır ve kendi kendine tıkanır (obliterasyon), o kısma dokunulmaz .
+                </div>
+                </details>        
+            </div>
+            <button class="btn btn-info btn-lg btn-block font-weight-bold py-3 shadow-sm mt-3" data-bs-toggle="collapse" data-bs-target="#siqu">Hayır</button>
+            <div id="siqu" class="collapse mt-2">🚨 Sonuç: EKSTRÜZYON
+                <details>
+                <summary>⚡ EKSTRÜZYON (DIŞARI UZAMA) ACİL PROTOKOLÜ</summary>
+                <div style="white-space: pre-wrap;">
+        1. Klinik ve Radyografik Tablo
+        Bulgular: Diş yuvasından dışarı (koronal yönde) uzamıştır, sallanır ve dişetinden kanama gelir. Vitalite (canlılık) testlerine çoğunlukla negatif yanıt alınır.
+        Röntgen: Kök ucundaki (apikal) boşluk belirgin şekilde artmış olarak izlenir.
+
+        2. Acil Müdahale ve Repozisyon (Kritik Ayrım!)
+        Erken Başvuru (<24 Saat): Diş nazikçe itilerek normal pozisyonuna oturtulur (repozisyon).
+        Geç Başvuru (>24 Saat) veya Pıhtı Varsa: Diş yeni pozisyonunda sabitlenmiş olabilir veya kök ucundaki kan pıhtılaşıp yerleşmeyi engelleyebilir. Dişi zorlayarak güç uygulayıp itme! Bunun yerine "kasıtlı replantasyon" yap (Dişi cerrahi olarak çekip 10 dakika içinde yuvasına geri yerleştir).
+        Splint: Her iki durumda da yerine oturtma işleminden sonra 2 hafta esnek splint uygula.
+
+        3. Kök Ucu (Apeks) Durumuna Göre İleri Tedavi
+        Kapalı Apeks (Kök Gelişimi Tamamlanmış): Sinir dokusu daima ölür (nekroz garanti). Enfeksiyonu önlemek için beklemeden, travmadan sonraki 7-10 gün içerisinde kanal tedavisine başla.
+        Açık Apeks (Kök Gelişimi Tamamlanmamış): Sinirin yeniden canlanma (revaskülarizasyon) ihtimali vardır. Hemen kanal tedavisine girme, gözlemle. Eğer takipte pulpa ölürse apeksifikasyon tedavisi uygula.
+                </div>
+                </details>      
+            </div>
+            </div>
+        </div>
+        <div class="card shadow-lg p-4 p-md-5 wizard-card" x-show="adim === 5" x-transition style="display: none;">
+            <div>
+            <h4>Dişin yer değiştirme yönü nedir?</h4>
+            <button class="btn btn-info btn-lg btn-block font-weight-bold py-3 shadow-sm mt-3" data-bs-toggle="collapse" data-bs-target="#sequ">İÇERİ GÖMÜLME (Intrusion)</button>
+            <div id="sequ" class="collapse mt-2">🚨 Sonuç: İNTRÜZYON
+                <details>
+                <summary>⚡ İNTRÜZYON (İÇERİ GÖMÜLME) ACİL PROTOKOLÜ</summary>
+                <div style="white-space: pre-wrap;">
+        1. Klinik Tablo
+        Bulgular: Diş kemik içine gömülmüştür. Sallanmaz, vurunca metalik/tiz bir ses verir. En kötü prognozlu lüksasyon tipidir.
+
+        2. Açık Apeks (Kök Gelişmemiş)
+        Bekle: Hemen müdahale etme, 3 hafta boyunca dişin kendi kendine sürmesini (spontan erüpsiyon) bekle.
+        Sürmezse: Ortodontik veya cerrahi kuvvetle dışarı çek.
+        Pulpa: Kanal tedavisi yapma, canlılığı takip et. Sadece nekroz gelişirse apeksifikasyon/revaskülarizasyon uygula.
+
+        3. Kapalı Apeks (Kök Gelişmiş)
+        Bekleme: Travmadan hemen sonra (2-3 hafta içinde) ortodontik veya cerrahi ekstrüzyon ile dişi yuvasından dışarı çek. (Cerrahi ekstrüzyon yaparsan 4 hafta esnek splint uygula).
+        Pulpa (%100 Nekroz Beklenir): 2 hafta içinde KESİNLİKLE kanal tedavisine başla ve kanala kalsiyum hidroksit koy.
+                </div>
+                </details>  
+            </div>
+
+            <button class="btn btn-info btn-lg btn-block font-weight-bold py-3 shadow-sm mt-3" data-bs-toggle="collapse" data-bs-target="#egqu">ÖNE/ARKAYA (Protrusion/Retrusion)</button>
+            <div id="egqu" class="collapse mt-2">🚨 Sonuç: LATERAL LÜKSASYON
+                <details>
+                <summary>⚡ LATERAL LÜKSASYON ACİL PROTOKOLÜ</summary>
+                <div style="white-space: pre-wrap;">
+        1. Klinik Tablo
+        Durum: Diş soket dışında (çoğunlukla palatinal/lingual yöne) yer değiştirmiştir.
+        Mobilite: Kemik içinde kilitli kaldığı için sallanmaz.
+        Bulgular: Vurunca yüksek/metalik ses verir, canlılık testi negatiftir, dişeti oluğunda kanama olabilir.
+
+        2. Acil Müdahale
+        Repozisyon: Anestezi altında parmak basısıyla yerine oturt ve radyografiyle kontrol et.
+        Zorlanma: Diş oturmuyorsa güç kullanma. 2 hafta bekle, sonra hareketli apareyle düzelt.
+        Splint: 4 hafta esnek splint uygula. Marjinal kemik kırığı varsa süreyi 3-4 hafta uzat.
+
+        3. Pulpa Protokolü
+        Açık Apeks: Hemen kanal tedavisi yapma, takip et. Sadece nekroz gelişirse apeksifikasyon uygula.
+        Kapalı Apeks: Nekroz gelişenlerde 2 hafta içinde KESİNLİKLE kanal tedavisine başla.
+        Rezorpsiyon Önlemi: İltihabi rezorpsiyona karşı kanala kalsiyum hidroksit koy. 3 ay sonraki kontrolde lezyon yoksa daimi dolguyu tamamla.
+                </div>
+                </details>  
+            </div>
+            </div>
+        </div>
+        <div class="card shadow-lg p-4 p-md-5 wizard-card" x-show="adim === 6" x-transition style="display: none;">
+            <div>
+            <h4>Dişte gevşeme/sallanma (mobilite) var mı?</h4>
+            <button class="btn btn-info btn-lg btn-block font-weight-bold py-3 shadow-sm mt-3" data-bs-toggle="collapse" data-bs-target="#niqu">Evet</button>
+            <div id="niqu" class="collapse mt-2">🚨 Sonuç: ALVEOL KIRIĞI
+                <details>
+                <summary>⚡ ALVEOL KIRIĞI ACİL PROTOKOLÜ</summary>
+                <div style="white-space: pre-wrap;">
+        1. Klinik Tablo
+        Durum: Alveol soket duvarının veya alveoler proçesin (dişi çevreleyen kemiğin) kırılması durumudur.
+        Teşhis: Tek bir dişin değil, grup halindeki dişlerin birlikte blok halinde sallanmasıyla (grup mobilite testi) tespit edilir.
+        Seyir: Sıklıkla kök kırıkları veya lüksasyon (yer değiştirme) yaralanmalarıyla birlikte görülür. Kök kırığıyla beraber olan alveol kırıkları çoğunlukla sorunsuz iyileşir.
+
+        2. Acil Müdahale
+        Repozisyon: Travmaya uğrayan dişi yerine oturturken bir dirençle karşılaşırsan (örn. labial alveol kemik kırığı), önce alveol soketini (kırık kemik parçasını) yerine oturt.
+        Splint: Kırık kemiğin sabitlenmesi için 4 hafta esnek splint uygula. Eğer lateral lüksasyon vakasında marjinal kemik kırığı da varsa splint süresini 3-4 hafta daha uzat.
+
+        3. Pulpa Protokolü
+        Takip: Kırığa eşlik eden dişin ana travma tipine (avulsiyon, lüksasyon vb.) ait açık/kapalı apeks kurallarını uygula ve etkilenen dişlerin canlılığını mutlaka vitalite testleriyle düzenli olarak takip et.
+                </div>
+                </details>  
+            </div>
+            <button @click="adim = 7" class="btn btn-info btn-lg btn-block font-weight-bold py-3 shadow-sm mt-3">Hayır</button>
+            </div>
+        </div>
+        <div class="card shadow-lg p-4 p-md-5 wizard-card" x-show="adim === 7" x-transition style="display: none;">
+            <div>
+            <h4>Vurmaya (perküsyona) karşı hassasiyet var mı?</h4>
+            <button class="btn btn-info btn-lg btn-block font-weight-bold py-3 shadow-sm mt-3" data-bs-toggle="collapse" data-bs-target="#tequ">Evet</button>
+            <div id="tequ" class="collapse mt-2">🚨 Sonuç: KONKÜZYON
+                <details>
+                <summary>⚡ KONKÜZYON (SARSILMA) ACİL PROTOKOLÜ</summary>
+                <div style="white-space: pre-wrap;">
+        1. Klinik Tablo
+        Durum: Dişte herhangi bir yer değiştirme veya anormal bir sallanma (mobilite) yoktur.
+        Bulgular: Vurmaya (perküsyon) karşı artmış bir hassasiyet vardır. Başlangıçta pulpa canlılık (vitalite) testlerine cevap vermeyebilir.
+
+        2. Acil Müdahale
+        İşlem: Çoğu zaman spesifik bir tedavi uygulama. Sadece dişi oklüzyondan (kapanıştan) hafifçe uzaklaştır.
+        Hasta Uyarısı: Duyarlılık azalıncaya kadar hastaya o dişle ısırma ve çiğneme yapmamasını tembihle.
+
+        3. Pulpa Protokolü ve Takip
+        Takip: Pulpa vitalite testlerini 1, 3, 6 ve 12 aylık aralıklarla mutlaka tekrarla.
+        Komplikasyon Riski: İlerleyen dönemde dişte pulpa nekrozu veya kök kanalında tıkanma (obliterasyon) gelişebileceği için düzenli kontrolü aksatma.
+                </div>
+                </details>  
+            </div>
+            <button @click="adim = 8" class="btn btn-info btn-lg btn-block font-weight-bold py-3 shadow-sm mt-3">Hayır</button>
+            </div>
+        </div>
+        <div class="card shadow-lg p-4 p-md-5 wizard-card" x-show="adim === 8" x-transition style="display: none;">
+            <div>
+            <h4>Gözle görülür bir kırık (fraktür) var mı?</h4>
+            <button @click="adim = 9" class="btn btn-info btn-lg btn-block font-weight-bold py-3 shadow-sm mt-3">Evet</button>
+            <button class="btn btn-info btn-lg btn-block font-weight-bold py-3 shadow-sm mt-3" data-bs-toggle="collapse" data-bs-target="#elqu">Hayır</button>
+            <div id="elqu" class="collapse mt-2">✅ Sonuç: SAĞLIKLI</div>
+            </div>
+        </div>
+        <div class="card shadow-lg p-4 p-md-5 wizard-card" x-show="adim === 9" x-transition style="display: none;">
+            <div>
+            <h4>Kırık hattı diş eti kenarının (gingival marjin) altında mı?</h4>
+            <button class="btn btn-info btn-lg btn-block font-weight-bold py-3 shadow-sm mt-3" data-bs-toggle="collapse" data-bs-target="#sequ">Evet</button>
+            <div id="sequ" class="collapse mt-2">🚨 Sonuç: KURON-KÖK KIRIĞI
+                <div style="white-space: pre-wrap;">
+        ⚡ KRON-KÖK KIRIĞI ACİL PROTOKOLÜ
+        Durum: Kırık hattı mine, dentin ve sement dokularını kapsar. Pulpanın açılmış veya açılmamış olmasına göre "komplike" veya "komplike olmayan" olarak ikiye ayrılır.
+        Bulgular: Kırık hattı genellikle dişeti altına (subgingival) doğru uzanır. Üst (koronal) kırık parçası hareketlidir ve sadece periodontal liflerle dişetine tutunur. Bu kırıklar ağırlıklı olarak periodontal (diş çevresi doku) bir sorun oluşturur.
+        Radyografi: Kırığın sadece dudak (labial) tarafı görülebilir, dile bakan (lingual) yöndeki uzantısı radyografide izlenemez.
+                </div>
+                <details>
+                <summary>1. Komplike Olmayan Kron-Kök Kırığı (Pulpa Kapalı)</summary>
+                <div style="white-space: pre-wrap;">
+        İlk İşlem: Anestezi altında hareketli koronal parçayı hemen çıkar.
+        Cerrahi İşlem: Kırık hattını açığa çıkarmak için restorasyon öncesinde dişeti kesimi (gingivektomi) ve duruma göre kemik düzenlemesi (osteotomi) yap.
+        Tedavi: Açığa çıkan dentin kanalcıklarını ve pulpayı koruyarak dişi orijinal fonksiyonuna ve estetiğine uygun şekilde restore et.
+                </div>
+                </details>
+                <details>
+                <summary>2. Komplike Kron-Kök Kırığı (Pulpa Açık)</summary>
+                <div style="white-space: pre-wrap;">
+        Sığ Kırık (Kök servikal 1/3 veya daha azı ile sınırlıysa): Kırık parçayı uzaklaştır, osteotomi ve gingivektomi ile kırık hattını açığa çıkar. Dişeti iyileşmesini ve kök kanal tedavisini tamamladıktan sonra post destekli restorasyon yap.
+        Derin Kırık - Cerrahi Ekstrüzyon (Kırık hattı daha derindeyse): Dişi çekerek alveol kemiğinin 1-3 mm üzerinde (koronalinde) tekrar yerine oturt. Dişi splint ile sabitle, 3-4 hafta sonra kök kanal tedavisini tamamla ve 2 ay içinde post destekli onarım yap.
+        Derin Kırık - Ortodontik Ekstrüzyon: Önce koronal parçayı çıkar. Açık apeksli dişte servikal pulpotomi, kapalı apeksli dişte pulpektomi (kanal tedavisi) yap. Ortodontik kuvvet uygulayarak dişi 4 hafta süreyle dışarı çek. Sonrasında dişi geçici olarak restore et, 6 ay boyunca komşu dişlere splintle ve ardından daimi restorasyona geç.
+                </div>
+                </details>
+            </div>
+            <button class="btn btn-info btn-lg btn-block font-weight-bold py-3 shadow-sm mt-3" data-bs-toggle="collapse" data-bs-target="#egqu">Hayır</button>
+            <div id="egqu" class="collapse mt-2">🚨 Sonuç: KURON KIRIĞI
+                <div style="white-space: pre-wrap;">
+        ⚡ KRON KIRIĞI ACİL PROTOKOLÜ
+                </div>
+                <details>
+                <summary>1. Minenin Tam Olmayan Kırığı (Çatlaklar)</summary>
+                <div style="white-space: pre-wrap;">
+        Durum: Dişe gelen doğrudan darbe sonucu minede çatlaklar oluşur, pulpa nekrozu tehlikesi azdır. Dişte herhangi bir duyarlılık bulunmayabilir.
+        Teşhis: Çatlak hatlarını incelemek için dişe paralel bir ışık kaynağı tut (transillüminasyon yöntemi kullan).
+        Tedavi: Gıda renklenmelerini önlemek için çatlak hattını rezinlerle ört, flor uygula. Pulpa damarlanması zarar görmüş olabileceğinden 5 yıl boyunca düzenli vitalite testi yap.
+                </div>
+                </details>
+                <details>
+                <summary>2. Komplike Olmayan Kron Kırığı (Pulpa Kapalı)</summary>
+                <div style="white-space: pre-wrap;">
+        Durum: Mine ve dentin kırılmıştır ancak pulpa açığa çıkmamıştır. Perküsyonda duyarlılık yoktur ve dişin mobilitesi normal sınırlardadır.
+        Tedavi (Sığ Kırık): Kalan dentin kalınlığı 0.5 mm'den fazlaysa asitleme ve bonding işlemleri uygulayarak kompozitle restore et. Alternatif olarak estetik için kendi kırık kron parçasını yapıştır.
+        Tedavi (Derin Kırık): Kalan dentin 0.5 mm'den azsa, pulpayı kalsiyum hidroksit içerikli materyal ile koruyarak restorasyonu tamamla.
+                </div>
+                </details>
+                <details>
+                <summary>3. Komplike Kron Kırığı (Pulpa Açık)</summary>
+                <div style="white-space: pre-wrap;">
+        Durum: Kırık mine ve dentini kapsar, pulpa açığa çıkarak ağız ortamına maruz kalır.
+        Açık Apeks (Kök Gelişmemiş): Dişi canlı tutmaya çalış; açığa çıkan kısımdan 1-2 mm pulpa dokusunu uzaklaştırarak parsiyel pulpotomi yap ve üzerini kalsiyum hidroksit, MTA veya Biodentine ile ört. Travma üzerinden 72 saatten fazla zaman geçmişse total pulpotomi yap. Başarı şansı düşük olduğu için direkt pulpa kuafajından kesinlikle kaçın. Diş nekrotik hale gelmişse apeksifikasyon veya pulpa revitalizasyonu (revaskülarizasyon) uygula.
+        Kapalı Apeks (Kök Gelişmiş): Sadece kompozit restorasyon yeterli olacaksa vital pulpa tedavilerini (parsiyel/total pulpotomi) tercih edebilirsin. Ancak kron-köprü veya kanal içi destek gerektiren karmaşık bir restorasyon planlıyorsan doğrudan pulpektomi (kanal tedavisi) yap. Pulpa nekrotikse zaman kaybetmeden kök kanal tedavisi uygula.
+                </div>
+                </details>
+            </div>
+            </div>
+        </div>
+        <button @click="adim = 1; sonuc = ''" class="btn btn-dark btn-block mt-4">
+            Sihirbazı tekrar başlat
+        </button>
+        </div>
+    </div>
+    <!-- Bootstrap JS dosyasını body'nin en sonuna koymak performansı artırır -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+[
+  {
+    "baslik": "Maxillary Tests",
+    "kisaKod": "ust",
+    "testler": [
+      {
+        "soru": "TEST 1: If the base plate dislodges when the mouth is half-open",
+        "icerik": "<strong>Problem:</strong> Effect of the buccinator muscle.<br><br><strong>Correction:</strong> At the level of the 1st and 2nd premolars, and 1st molar on both sides."
+      },
+      {
+        "soru": "TEST 2: If the base plate dislodges when the mouth is opened widely as if yawning",
+        "icerik": "<strong>Problem:</strong> Pterygomaxillary raphe and anterior fibers of the buccinator/masseter muscles.<br><br><strong>Correction:</strong> Behind the tuberosities on both sides, at the level of the 2nd molars."
+      },
+      {
+        "soru": "TEST 3: If the base plate dislodges during whistling or sucking movements",
+        "icerik": "<strong>Problem:</strong> The labial vestibule and labial frenum area is overextended.<br><br><strong>Correction:</strong> At the level of the labial frenum and labial vestibule area."
+      },
+      {
+        "soru": "TEST 4: If it dislodges during backward/downward movement of the lip commissure while smiling",
+        "icerik": "<strong>Correction:</strong> At the level of the buccal frenum and buccal vestibule area."
+      },
+      {
+        "soru": "TEST 5: If the base plate dislodges with the 'Ah' sound or coughing",
+        "icerik": "<strong>Correction:</strong> The base plate should be shortened in the anteroposterior direction."
+      }
+    ]
+  },
+  {
+    "baslik": "Mandibular Tests",
+    "kisaKod": "alt",
+    "testler": [
+      {
+        "soru": "TEST 1: If the base plate dislodges when the mouth is half-open",
+        "icerik": "<strong>Correction:</strong> Border extensions in the buccal vestibule area are shortened."
+      },
+      {
+        "soru": "TEST 2: If the base plate dislodges when the mouth is opened widely",
+        "icerik": "<strong>Problem:</strong> Pterygomaxillary raphe and anterior fibers of the masseter muscle.<br><br><strong>Correction:</strong> The retromolar pad area to the level of the molars on both sides is shortened."
+      },
+      {
+        "soru": "TEST 3: If the base plate dislodges when the tongue is protruded",
+        "icerik": "<strong>Problem:</strong> Movements of the mylohyoid muscle.<br><br><strong>Correction:</strong> The mylohyoid muscle should be relieved on the lingual side at the level of the molars; if necessary, the plate should be made concave."
+      },
+      {
+        "soru": "TEST 4: If the plate dislodges when licking the inside of the cheek with the tip of the tongue",
+        "icerik": "<strong>Correction:</strong> Shortening is done at the level of the canines and premolars."
+      },
+      {
+        "soru": "TEST 5: If the base plate dislodges when the tongue is directed towards the nose",
+        "icerik": "<strong>Problem:</strong> The incisors and lingual frenum area on the lingual side.<br><br><strong>Correction:</strong> Adjustments are made to these areas."
+      },
+      {
+        "soru": "TEST 6: If there is a feeling of pain during swallowing",
+        "icerik": "<strong>Problem:</strong> Superior constrictor muscle of the pharynx.<br><br><strong>Correction:</strong> The distolingual corner of the plate should be shortened and polished."
+      },
+      {
+        "soru": "TEST 7: If the plate dislodges during whistling/sucking movements",
+        "icerik": "<strong>Problem:</strong> Contraction of the orbicularis oris muscle.<br><br><strong>Correction:</strong> The labial frenum and anterior vestibular area are adjusted."
+      }
+    ]
+  }
+]

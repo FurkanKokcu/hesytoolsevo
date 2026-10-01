@@ -1,0 +1,62 @@
+[
+  {
+    "tani": "Sinüs Post Op. Enfeksiyon",
+    "id": "sinus",
+    "ilaclar": [
+      { "ad": "Augmentin-BID 1000 mg 10 film tablet", "doz": "1B (bir)", "kullanim": "2x1" },
+      { "ad": "Brufen 600 mg 20 film tablet", "doz": "1B (bir)", "kullanim": "3x1" },
+      { "ad": "Kloroben Gargara", "doz": "1B (bir)", "kullanim": "3x1" },
+      { "ad": "İliadin Merck %0,05 Dozajlı Sprey", "doz": "1B (bir)", "kullanim": "3x1 (3 gün)" },
+      { "ad": "Deloday 5 mg 20 film tablet", "doz": "1B (bir)", "kullanim": "1x1" }
+    ]
+  },
+  {
+    "tani": "Dörtlü Post Op. Enfeksiyon",
+    "id": "dortlu",
+    "ilaclar": [
+      { "ad": "Augmentin-BID 1000 mg 10 film tablet", "doz": "1B (bir)", "kullanim": "2x1" },
+      { "ad": "Flagyl 500 mg 20 film tablet", "doz": "1B (bir)", "kullanim": "3x1" },
+      { "ad": "Arveles 25 mg film tablet", "doz": "1B (bir)", "kullanim": "3x1" },
+      { "ad": "Kloroben Gargara", "doz": "1B (bir)", "kullanim": "3x1" }
+    ]
+  },
+  {
+    "tani": "Üçlü Post Op. Enfeksiyon",
+    "id": "uclu",
+    "ilaclar": [
+      { "ad": "Augmentin-BID 1000 mg 10 film tablet", "doz": "1B (bir)", "kullanim": "2x1" },
+      { "ad": "Brufen 600 mg 20 film tablet", "doz": "1B (bir)", "kullanim": "3x1" },
+      { "ad": "Kloroben Gargara", "doz": "1B (bir)", "kullanim": "3x1" }
+    ]
+  },
+  {
+    "tani": "Eklem Miyalji-Miyospazm",
+    "id": "eklem",
+    "ilaclar": [
+      { "ad": "Sirdalud 2 mg 30 tablet", "doz": "1B (bir)", "kullanim": "3x1" },
+      { "ad": "Brufen Retard 800 mg yavaş salınımlı 14 film tablet", "doz": "1B (bir)", "kullanim": "2x1" }
+    ]
+  },
+  {
+    "tani": "Ameliyat Öncesi Post Op. Enfeksiyon",
+    "id": "preop",
+    "ilaclar": [
+      { "ad": "Rif 125 mg IM Enjeksiyonluk Çözelti", "doz": "1B (bir)", "kullanim": "1x1" },
+      { "ad": "Tilcotil 20 mg/2 ml IM/IV Liyofize Toz İçeren Flakon", "doz": "1B (bir)", "kullanim": "1x1" },
+      { "ad": "Dekort 8 mg/2 ml IM/IV Enjeksiyonluk Çözelti", "doz": "1B (bir)", "kullanim": "1x1" }
+    ]
+  },
+    {
+    "tani": "Sıkça Kullanılan İlaçlar",
+    "id": "sikca",
+    "ilaclar": [
+      { "ad": "Augmentin-BID 1000 mg 10 film tablet", "doz": "1B (bir)", "kullanim": "2x1" },
+      { "ad": "Flagyl 500 mg 20 film tablet", "doz": "1B (bir)", "kullanim": "2x1" },
+      { "ad": "Macrol 500 mg 14 film tablet", "doz": "1B (bir)", "kullanim": "2x1" },
+      { "ad": "Parol 500 mg 20 film tablet", "doz": "1B (bir)", "kullanim": "3x1" },
+      { "ad": "Arveles 25 mg 20 film tablet", "doz": "1B (bir)", "kullanim": "2x1" },
+      { "ad": "Kloroben Gargara", "doz": "1B (bir)", "kullanim": "3x1" },
+      { "ad": "Brufen 600 mg 20 film tablet", "doz": "1B (bir)", "kullanim": "3x1" }
+    ]
+  }
+]
